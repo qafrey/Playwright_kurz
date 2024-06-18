@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.only('Můj test', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('https://playwright.dev/');
   page.pause();
 
   // Expect a title "to contain" a substring.

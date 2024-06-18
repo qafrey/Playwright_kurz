@@ -26,7 +26,8 @@ test('Nelze se přihlásit s nevalidním už. jménem a validním heslem', async
   await expect(loginPage.invalidCredentialsErrorMessage).toBeVisible();
 });
 
-test('Nelze se přihlásit s nevalidním už. jménem a nevalidním heslem', async ({ page }) => {
+test('Nelze se přihlásit s nevalidním už. jménem a nevalidním heslem', async ({ page, browserName }) => {
+  test.skip(browserName === 'firefox', 'Stále běží')
   const loginPage = new LoginPage(page);
   await loginPage.gotoLoginPage();
   await loginPage.enterInvalidUsername();

@@ -5,12 +5,18 @@ export class LoginPage {
     userNameInput: Locator;
     passwordInput: Locator;
     loginButton: Locator;
+    invalidCredentialsErrorMessage: Locator;
+    requiredCredentialsErrorMessage: Locator;
+    lockedoutCredentialsErrorMessage: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.userNameInput = page.locator('#user-name');
         this.passwordInput = page.locator('#password');
         this.loginButton = page.locator('#login-button');
+        this.invalidCredentialsErrorMessage = page.getByText('Epic sadface: Username and password do not match any user in this service');
+        this.requiredCredentialsErrorMessage = page.getByText('Epic sadface: Username is required')
+        this.lockedoutCredentialsErrorMessage = page.getByText('Epic sadface: Sorry, this user has been locked out.')
     }
 
 
@@ -22,6 +28,10 @@ export class LoginPage {
     async enterValidUsername() {
         await this.userNameInput.fill('standard_user');
     }
+// Zadání zablokovaného už. jména
+async enterLockedOutUsername() {
+    await this.userNameInput.fill('locked_out_user');
+}
 // Zadání nevalidního už. jména
     async enterInvalidUsername() {
     await this.userNameInput.fill('Bob');

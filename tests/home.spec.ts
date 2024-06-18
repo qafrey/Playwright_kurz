@@ -5,10 +5,10 @@ import { HomePage } from '../page-objects/HomePage';
 
 test('Ověření home title', async ({ page }) => {
   const loginPage = new LoginPage(page);
-  const homepage = new HomePage(page);
+  const homePage = new HomePage(page);
   await loginPage.gotoLoginPage();
   await loginPage.login();
-  await expect(homepage.title).toBeVisible();
+  await expect(homePage.title).toBeVisible();
 });
 
 test('Ověření funkcionality přidání položky do košíku', async ({ page }) => {
